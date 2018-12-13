@@ -2,18 +2,25 @@
   <div class="m-header">
     <el-row>
       <el-col>
-        topbae
+        <top-bar />>
       </el-col>
     </el-row>
     <el-row>
       <el-col>
-        saearch-bar
+        <search-bar />
       </el-col>
     </el-row>
   </div>  
 </template>
 <script>
-export default {}
+import TopBar from './topbar'
+import SearchBar from './searchbar'
+export default {
+  components: {
+    TopBar,
+    SearchBar
+  }
+}
 </script>
 <style lang="scss">
 @import '@/assets/css/public/header/index.scss';
