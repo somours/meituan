@@ -1,5 +1,5 @@
 <template>
-  <el-row class="m.header">
+  <el-row class="m-header">
     <el-col :span="5">
       <geo />
     </el-col>
@@ -7,7 +7,7 @@
       <user />
     </el-col>
     <el-col :span="14">
-      <navbar />>
+      <navbar />
     </el-col>
   </el-row>
 </template>
