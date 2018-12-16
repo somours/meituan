@@ -32,14 +32,16 @@
         <el-button 
           class="btn-login" 
           type="success" 
-          size="mini">
+          size="mini"
+          @click="login">
           登录
         </el-button>
       </div>
     </div>
   </div>
 </template>
- <script>
+<script>
+import CryptoJS from 'crypto-js'
 export default {
   layout: 'blank',
   data() {
@@ -48,6 +50,26 @@ export default {
       username: '',
       password: '',
       error: ''
+    }
+  },
+  methods: {
+    login() {
+      this.$axios
+        .post('/users/signin', {
+          username: window.encodeURIComponent(this.username),
+          password: CryptoJS.MD5(this.password).toString()
+        })
+        .then(({ status, data }) => {
+          if (status === 200) {
+            if (data && data.code === 0) {
+              location.href = '/'
+            } else {
+              this.error = data.msg
+            }
+          } else {
+            this.error = '服务端错误'
+          }
+        })
     }
   }
 }
